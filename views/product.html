@@ -9,14 +9,16 @@
         <link rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css' />
     </header>
     <body>
-        <a href='/'>Home</a>
+
 
         <div class='container'>
+            <a href='/products'>All Products</a>
             <h1>Product {{name}}</h1>
             <div class="well">
-                Rating {{rating}} <br>
-                <button id='delete'>Delete</button>
-
+                <p>Rating {{rating}}</p>
+                <form method='POST' action='/products/{{id}}?_method=DELETE'>
+                    <button class='btn btn-danger'>Delete</button>
+                </form>
             </div>
         </div>
     </body>
