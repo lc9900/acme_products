@@ -18,3 +18,21 @@ router.delete('/:id', function(req, res){
     db.remove(id);
     res.redirect('/products');
 })
+
+router.get('/', function(req, res){
+    res.render('products', {products: db.listAll()});
+});
+
+router.post('/', function(req, res){
+    var name = req.body.name;
+    var rating = req.body.rating;
+    if( name && rating) {
+        db.add(name, rating);
+        res.redirect('/products');
+    }
+    else{
+        res.render('error');
+    }
+});
+
+

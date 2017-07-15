@@ -29,7 +29,14 @@ app.use('/products', productsRoute);
 
 app.get('/', function(req, res){
     var product = db.maxRating();
+    if(!product){
+        product = {topId: null, topName: null};
+    }
     // var productId = 1;
     // var productName = 'SuperMan Figure';
     res.render('index', {topId: product.id, topName: product.name});
+});
+
+app.use(function(req, res){
+  res.render('error');
 });
